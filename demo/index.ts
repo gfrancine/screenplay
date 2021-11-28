@@ -4,11 +4,18 @@ import { keymap } from "prosemirror-keymap";
 import { bubbleMenuPlugin } from "../src/editor-plugins/bubble-menu";
 
 import "./index.scss";
-import { markupKeysPlugin, dualDialogueKeysPlugin } from "../src/editor-plugins/keybinds";
+import {
+  dualDialogueKeysPlugin,
+  markupKeysPlugin,
+} from "../src/editor-plugins/keybinds";
 
-(window as any).sp = new ScreenplayEditor({
+(window as unknown as { sp: ScreenplayEditor }).sp = new ScreenplayEditor({
   root: document.getElementById("root"),
-  plugins: [history(), keymap({ "Mod-z": undo, "Mod-y": redo }),
-  bubbleMenuPlugin,  markupKeysPlugin, dualDialogueKeysPlugin,
-],
+  plugins: [
+    history(),
+    keymap({ "Mod-z": undo, "Mod-y": redo }),
+    bubbleMenuPlugin,
+    markupKeysPlugin,
+    dualDialogueKeysPlugin,
+  ],
 });

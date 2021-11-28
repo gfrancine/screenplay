@@ -18,7 +18,7 @@ export const tabPlugin = keymap({
   Tab(state, dispatch) {
     const { from } = state.selection;
     if (!state.selection.empty) return false;
-    let hasHandled: boolean = false;
+    let hasHandled = false;
 
     state.doc.nodesBetween(from, from, (node) => {
       const command = nodeCommandsMap[node.type.name];

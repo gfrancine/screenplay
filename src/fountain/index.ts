@@ -42,7 +42,7 @@ function flatBlockToFountain(block: JsonFlatBlockNode, opts?: {
     case "characterInDual": {
       // todo: match group 1 and 2 ([^()]+)(\([^()\n]*\))?
       text = "\n\n" + text.toUpperCase();
-      if (opts?.isDualDialogue) text += "\n"
+      if (opts?.isDualDialogue) text += "\n";
       break;
     }
     case "transition": {

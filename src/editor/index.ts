@@ -10,7 +10,7 @@ import { JsonState } from "../types";
 import { Schema } from "prosemirror-model";
 
 export { schema } from "./schema";
-export { createDualDialogue} from "./dual-dialogue"
+export { createDualDialogue } from "./dual-dialogue";
 
 export const defaultPlugins = [
   keymap(makeEnterHandlerKeymap(baseKeymap as { Enter: Command })),
@@ -21,7 +21,7 @@ export const defaultPlugins = [
 export class ScreenplayEditor {
   view: EditorView;
   config: Record<string, unknown> & {
-    schema: Schema
+    schema: Schema;
   };
 
   constructor({ root, plugins = [], jsonState }: {

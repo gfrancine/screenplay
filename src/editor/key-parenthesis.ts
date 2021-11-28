@@ -14,7 +14,7 @@ export const parentheticalPlugin = keymap({
   "(": (state, dispatch, view) => {
     const { from } = state.selection;
     if (!state.selection.empty) return false;
-    let hasHandled: boolean = false;
+    let hasHandled = false;
 
     state.doc.nodesBetween(from, from, (node) => {
       if (hasHandled) return;
