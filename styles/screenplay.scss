@@ -41,15 +41,16 @@
     width: 36em;
 
     .x-dual-dialogue-col {
-      flex: 0 0 37.2em;
-      width: 37.2em;
+      width: 18.6em;
+      min-width: 18.6em;
+      max-width: 18.6em;
 
       .x-character {
-        margin: 1em 0 0 6em;
+        margin: 1em 0 0 4.8em;
       }
 
       .x-parenthetical {
-        margin: 0 0 0 3em;
+        margin: 0 0 0 1.8em;
         width: 15em;
       }
       
@@ -61,7 +62,7 @@
   }
 
   .x-parenthetical {
-    margin: 0 0 0 9em;
+    margin: 0 0 0 8.4em;
     width: 15em;
   }
 
