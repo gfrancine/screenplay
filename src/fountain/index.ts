@@ -53,9 +53,12 @@ function flatBlockToFountain(block: JsonFlatBlockNode, opts?: {
     case "parenthetical":
     case "dialogue":
     case "parentheticalInDual":
-    case "dialogueInDual":
-    case "action": {
+    case "dialogueInDual": {
       text = "\n" + text;
+      break;
+    }
+    case "action": {
+      text = "\n\n" + text;
       break;
     }
   }
