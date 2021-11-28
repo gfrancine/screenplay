@@ -7,7 +7,7 @@ import { tabPlugin } from "./key-tab";
 import { makeEnterHandlerKeymap } from "./key-enter";
 import { parentheticalPlugin } from "./key-parenthesis";
 import { JsonState } from "../types";
-import { Schema } from "prosemirror-model";
+import { Node, Schema } from "prosemirror-model";
 
 export { schema } from "./schema";
 export { createDualDialogue } from "./dual-dialogue";
@@ -48,10 +48,10 @@ export class ScreenplayEditor {
   }
 
   loadJson(jsonState: JsonState) {
-    this.view.updateState(EditorState.fromJSON(
-      this.config,
-      jsonState,
-    ));
+    this.view.updateState(EditorState.create({
+      ...this.config,
+      doc: Node.fromJSON(schema, jsonState),
+    }));
   }
 
   toJson(): JsonState {
