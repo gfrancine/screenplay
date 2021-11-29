@@ -4,4 +4,8 @@
 #root {
   @include editor.editor;
   @include editor-plugins.bubble-menu;
+
+  .ProseMirror {
+    margin: 0 9em;
+  }
 }

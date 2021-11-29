@@ -4,30 +4,38 @@ export type JSONTextMark = {
 
 export type JSONTextNode = {
   type: "text";
-  marks: JSONTextMark[];
+  marks?: JSONTextMark[];
   text: string;
 };
 
-export type JSONFlatBlockNode = {
-  type:
-    | "scene"
-    | "character"
-    | "action"
-    | "dialogue"
-    | "parenthetical"
-    | "characterInDual"
-    | "dialogueInDual"
-    | "parentheticalInDual"
-    | "transition";
-  content: JSONTextNode[];
+export type JSONSceneNode = {
+  type: "scene";
+  attrs: {
+    number: string;
+  };
+  content?: JSONTextNode[];
 };
+
+export type JSONFlatBlockNode =
+  | {
+    type:
+      | "scene"
+      | "character"
+      | "action"
+      | "dialogue"
+      | "parenthetical"
+      | "transition";
+    content?: JSONTextNode[];
+  }
+  | JSONDualDialogueFlatBlockNode
+  | JSONSceneNode;
 
 export type JSONDualDialogueFlatBlockNode = {
   type:
     | "characterInDual"
     | "dialogueInDual"
     | "parentheticalInDual";
-  content: JSONTextNode[];
+  content?: JSONTextNode[];
 };
 
 export type JSONDualDialogueCol = {

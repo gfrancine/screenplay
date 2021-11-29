@@ -76,9 +76,20 @@ export const schema = new Schema({
     scene: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ tag: "p.x-scene" }],
-      toDOM() {
-        return ["p", { class: "x-scene" }, 0];
+      parseDOM: [{
+        tag: "div.x-scene",
+        getAttrs(domNode) {
+          if (!(domNode instanceof HTMLElement)) return false;
+          return {
+            number: domNode.attributes.getNamedItem("x-scene-number").value ||
+              "",
+          };
+        },
+      }],
+      attrs: {
+        number: {
+          default: "",
+        },
       },
     },
     parenthetical: {

@@ -4,6 +4,7 @@
     font-size: 12pt;
     width: 34.8em;
     white-space: pre-wrap;
+    margin: 0 9em;
 
     * {
       box-sizing: border-box;
@@ -13,6 +14,32 @@
       margin: 1em 0 0 0;
       text-transform: uppercase;
       font-weight: bold;
+      position: relative;
+
+      .x-scenenum-left {
+        position: absolute;
+        transform: translateX(calc(-100%));
+        text-align: center;
+        padding-right: 0.6em;
+        width: 9em;
+
+        // input reset
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+        padding: 0;
+        border: 0;
+        background: none;
+        outline: none;
+      }
+
+      .x-scenenum-right {
+        text-transform: none;
+        position: absolute;
+        transform: translateX(100%);
+        padding-left: 0.6em;
+        right: 0;
+      }
     }
 
     .x-action {

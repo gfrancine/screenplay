@@ -2,6 +2,7 @@ import {
   JSONDoc,
   JSONDualDialogue,
   JSONFlatBlockNode,
+  JSONSceneNode,
   JSONTextNode,
 } from "../types";
 
@@ -41,6 +42,10 @@ function flatBlockToFountain(block: JSONFlatBlockNode, opts?: {
       text = text.toUpperCase();
       if (!text.startsWith("INT") && !text.startsWith("EXT")) {
         text = "." + text;
+      }
+      const sceneBlock = block as JSONSceneNode;
+      if (sceneBlock.attrs.number.length > 0) {
+        text += " #" + sceneBlock.attrs.number + "#";
       }
       text = "\n\n" + text;
       break;

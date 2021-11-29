@@ -8,9 +8,11 @@ import { makeEnterHandlerKeymap } from "./key-enter";
 import { parentheticalPlugin } from "./key-parenthesis";
 import { JSONDoc } from "../types";
 import { Node, Schema } from "prosemirror-model";
+import { sceneNodeView } from "./scene";
 
 export { schema } from "./schema";
 export { insertDualDialogue } from "./dual-dialogue";
+export { sceneNodeView } from "./scene";
 
 export const defaultPlugins = [
   keymap(makeEnterHandlerKeymap(baseKeymap as { Enter: Command })),
@@ -44,7 +46,12 @@ export class ScreenplayEditor {
       )
       : EditorState.create(this.config);
 
-    this.view = new EditorView(root, { state });
+    this.view = new EditorView(root, {
+      state,
+      nodeViews: {
+        scene: sceneNodeView,
+      },
+    });
   }
 
   loadJSON(jsonDoc: JSONDoc) {
