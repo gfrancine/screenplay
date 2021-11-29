@@ -1,4 +1,4 @@
-import { Schema } from "prosemirror-model";
+import { Fragment, Schema } from "prosemirror-model";
 
 // forked from prosemirror-schema-basic
 // https://github.com/ProseMirror/prosemirror-schema-basic/blob/master/src/schema-basic.js
@@ -64,7 +64,6 @@ export const schema = new Schema({
         return ["div", { class: "x-dual-dialogue-col" }, 0];
       },
     },
-
     dualDialogue: {
       content: "dualDialogueCol{2}",
       group: "block",
@@ -79,13 +78,20 @@ export const schema = new Schema({
       parseDOM: [{
         tag: "div.x-scene",
         getAttrs(domNode) {
-          if (!(domNode instanceof HTMLElement)) return false;
           return {
-            number: domNode.attributes.getNamedItem("x-scene-number").value ||
-              "",
+            number: (domNode as HTMLElement)
+              .attributes
+              .getNamedItem("data-scene-number")?.value || "",
           };
         },
       }],
+      toDOM(node) {
+        return [
+          "div",
+          { class: "x-scene", "data-scene-number": node.attrs.number || "" },
+          ["p", 0],
+        ];
+      },
       attrs: {
         number: {
           default: "",

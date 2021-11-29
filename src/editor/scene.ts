@@ -26,6 +26,7 @@ export function sceneNodeView(
 
   const dom = el("div")
     .class("x-scene")
+    .attr("data-scene-number", node.attrs.number)
     .children(
       scenenum,
       el("div")
