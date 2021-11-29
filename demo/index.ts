@@ -2,14 +2,15 @@ import { ScreenplayEditor } from "../src/editor";
 import { history, redo, undo } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 import { bubbleMenuPlugin } from "../src/editor-plugins/bubble-menu";
-
-import "./index.scss";
 import {
   dualDialogueKeysPlugin,
   markupKeysPlugin,
 } from "../src/editor-plugins/keybinds";
+import { docToFountain } from "../src/fountain";
 
-(window as unknown as { sp: ScreenplayEditor }).sp = new ScreenplayEditor({
+import "./index.scss";
+
+const sp = new ScreenplayEditor({
   root: document.getElementById("root"),
   plugins: [
     history(),
@@ -19,3 +20,7 @@ import {
     dualDialogueKeysPlugin,
   ],
 });
+
+(window as unknown as { sp: ScreenplayEditor }).sp = sp;
+(window as unknown as { toFountain: typeof docToFountain }).toFountain = () =>
+  docToFountain(sp.toJSON());

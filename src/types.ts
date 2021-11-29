@@ -44,14 +44,7 @@ export type JSONTopLevelBlockNode =
   | JSONFlatBlockNode
   | JSONDualDialogue;
 
-export type JSONState = {
-  doc: {
-    type: "doc";
-    content: JSONTopLevelBlockNode[];
-  };
-  selection?: {
-    type: string;
-    anchor: number;
-    head: number;
-  };
+export type JSONDoc = {
+  type: "doc";
+  content: JSONTopLevelBlockNode[];
 };

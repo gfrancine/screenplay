@@ -6,7 +6,7 @@ import { baseKeymap, Command } from "prosemirror-commands";
 import { tabPlugin } from "./key-tab";
 import { makeEnterHandlerKeymap } from "./key-enter";
 import { parentheticalPlugin } from "./key-parenthesis";
-import { JSONState } from "../types";
+import { JSONDoc } from "../types";
 import { Node, Schema } from "prosemirror-model";
 
 export { schema } from "./schema";
@@ -24,10 +24,10 @@ export class ScreenplayEditor {
     schema: Schema;
   };
 
-  constructor({ root, plugins = [], jsonState }: {
+  constructor({ root, plugins = [], jsonDoc }: {
     root: Element;
     plugins?: Plugin[];
-    jsonState?: JSONState;
+    jsonDoc?: JSONDoc;
   }) {
     this.config = {
       schema,
@@ -37,24 +37,24 @@ export class ScreenplayEditor {
       ],
     };
 
-    const state = jsonState !== undefined
+    const state = jsonDoc !== undefined
       ? EditorState.fromJSON(
         this.config,
-        jsonState,
+        jsonDoc,
       )
       : EditorState.create(this.config);
 
     this.view = new EditorView(root, { state });
   }
 
-  loadJSON(jsonState: JSONState) {
+  loadJSON(jsonDoc: JSONDoc) {
     this.view.updateState(EditorState.create({
       ...this.config,
-      doc: Node.fromJSON(schema, jsonState),
+      doc: Node.fromJSON(schema, jsonDoc),
     }));
   }
 
-  toJSON(): JSONState {
-    return this.view.state.doc.toJSON() as JSONState;
+  toJSON(): JSONDoc {
+    return this.view.state.doc.toJSON() as JSONDoc;
   }
 }

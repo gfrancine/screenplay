@@ -1,10 +1,10 @@
-import { JSONFlatBlockNode, JSONState, JSONTextNode } from "../types";
+import { JSONDoc, JSONFlatBlockNode, JSONTextNode } from "../types";
 
 // https://fountain.io/syntax
 
 function textNodeToFountain(textNode: JSONTextNode) {
   let { text } = textNode;
-  textNode.marks.forEach((mark) => {
+  textNode.marks?.forEach((mark) => {
     switch (mark.type) {
       case "em": {
         text = "*" + text + "*";
@@ -66,10 +66,10 @@ function flatBlockToFountain(block: JSONFlatBlockNode, opts?: {
   return text;
 }
 
-export function stateToFountain(state: JSONState) {
+export function docToFountain(doc: JSONDoc) {
   let str = "";
 
-  state.doc.content.forEach((block) => {
+  doc.content.forEach((block) => {
     if (block.type === "dualDialogue") {
       // parse the second column with the isDualDialogue option
     } else {
@@ -80,7 +80,7 @@ export function stateToFountain(state: JSONState) {
   return str;
 }
 
-export function stateFromFountain() {
+export function docFromFountain() {
 }
 
 export function titleToFountain() {
