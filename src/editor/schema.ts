@@ -112,7 +112,7 @@ export const schema = new Schema({
   },
   marks: {
     charParen: {
-      parseDOM: [{ tag: "span", attrs: { class: "x-char-paren" } }],
+      parseDOM: [{ tag: "span.x-char-paren" }],
       inclusive: false,
       spanning: false,
       toDOM() {
