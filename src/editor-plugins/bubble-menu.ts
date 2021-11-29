@@ -6,7 +6,7 @@ class BubbleMenuPlugin {
 
   constructor(view: EditorView) {
     this.bubble = document.createElement("div");
-    this.bubble.className = "bubble";
+    this.bubble.className = "x-bubble-menu";
     view.dom.parentNode.appendChild(this.bubble);
 
     this.update(view, null);
