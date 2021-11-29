@@ -1,4 +1,9 @@
-import { JSONDoc, JSONFlatBlockNode, JSONTextNode } from "../types";
+import {
+  JSONDoc,
+  JSONDualDialogue,
+  JSONFlatBlockNode,
+  JSONTextNode,
+} from "../types";
 
 // https://fountain.io/syntax
 
@@ -27,12 +32,14 @@ function textNodeToFountain(textNode: JSONTextNode) {
 function flatBlockToFountain(block: JSONFlatBlockNode, opts?: {
   isDualDialogue?: boolean;
 }) {
-  let text = block.content.map(textNodeToFountain).join("");
+  let text = block.content
+    ? block.content.map(textNodeToFountain).join("")
+    : "";
 
   switch (block.type) {
     case "scene": {
       text = text.toUpperCase();
-      if (!text.startsWith("INT") || !text.startsWith("EXT")) {
+      if (!text.startsWith("INT") && !text.startsWith("EXT")) {
         text = "." + text;
       }
       text = "\n\n" + text;
@@ -40,9 +47,15 @@ function flatBlockToFountain(block: JSONFlatBlockNode, opts?: {
     }
     case "character":
     case "characterInDual": {
-      // todo: match group 1 and 2 ([^()]+)(\([^()\n]*\))?
-      text = "\n\n" + text.toUpperCase();
-      if (opts?.isDualDialogue) text += "\n";
+      const matches = text.match(/([^()]+)(\([^()\n]*\))?/);
+      if (matches) {
+        const character = matches[1];
+        const paren = matches[2] || "";
+        text = "\n\n" + character.toUpperCase() + paren;
+      } else {
+        text = "\n\n" + text.toUpperCase();
+      }
+      if (opts?.isDualDialogue) text += " ^";
       break;
     }
     case "transition": {
@@ -71,13 +84,19 @@ export function docToFountain(doc: JSONDoc) {
 
   doc.content.forEach((block) => {
     if (block.type === "dualDialogue") {
-      // parse the second column with the isDualDialogue option
+      block = block as JSONDualDialogue;
+      str += block.content[0].content.map((node) =>
+        flatBlockToFountain(node)
+      ).join("") +
+        block.content[1].content.map((node) =>
+          flatBlockToFountain(node, { isDualDialogue: true })
+        ).join("");
     } else {
       str += flatBlockToFountain(block);
     }
   });
 
-  return str;
+  return str.trim();
 }
 
 export function docFromFountain() {
