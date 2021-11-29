@@ -24,3 +24,5 @@ const sp = new ScreenplayEditor({
 (window as unknown as { sp: ScreenplayEditor }).sp = sp;
 (window as unknown as { toFountain: typeof docToFountain }).toFountain = () =>
   docToFountain(sp.toJSON());
+
+sp.view.focus();
