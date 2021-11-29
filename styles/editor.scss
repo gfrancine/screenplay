@@ -48,17 +48,22 @@
       .x-dual-dialogue-col {
         width: 16.2em;
 
-        .x-character {
+        .x-character-dual {
           margin: 1em 0 0 4.8em;
           width: 11.4em;
+          text-transform: uppercase;
+
+          .x-char-paren {
+            text-transform: none;
+          }
         }
 
-        .x-parenthetical {
+        .x-parenthetical-dual {
           margin: 0 0 0 1.8em;
           width: 14.4em;
         }
         
-        .x-dialogue {
+        .x-dialogue-dual {
           margin: 0;
           width: 16.2em;
         }

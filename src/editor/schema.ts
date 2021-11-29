@@ -35,25 +35,25 @@ export const schema = new Schema({
     characterInDual: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ tag: "p.x-character.dual" }],
+      parseDOM: [{ tag: "p.x-character-dual" }],
       toDOM() {
-        return ["p", { class: "x-character dual" }, 0];
+        return ["p", { class: "x-character-dual" }, 0];
       },
     },
     dialogueInDual: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ tag: "p.x-dialogue.dual" }],
+      parseDOM: [{ tag: "p.x-dialogue-dual" }],
       toDOM() {
-        return ["p", { class: "x-dialogue dual" }, 0];
+        return ["p", { class: "x-dialogue-dual" }, 0];
       },
     },
     parentheticalInDual: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ tag: "p.x-parenthetical.dual" }],
+      parseDOM: [{ tag: "p.x-parenthetical-dual" }],
       toDOM() {
-        return ["p", { class: "x-parenthetical dual" }, 0];
+        return ["p", { class: "x-parenthetical-dual" }, 0];
       },
     },
     dualDialogueCol: {
