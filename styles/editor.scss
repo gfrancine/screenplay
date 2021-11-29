@@ -15,6 +15,7 @@
       text-transform: uppercase;
       font-weight: bold;
       position: relative;
+      display:block;
 
       .x-scenenum-left {
         position: absolute;
@@ -27,6 +28,7 @@
         font-size: inherit;
         font-family: inherit;
         font-weight: inherit;
+        color: inherit;
         padding: 0;
         border: 0;
         background: none;

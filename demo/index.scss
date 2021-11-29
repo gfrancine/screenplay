@@ -1,11 +1,16 @@
 @use "../styles/editor.scss";
 @use "../styles/editor-plugins.scss";
 
+html, body {
+  background: #222;
+  color: #ccc;
+}
+
 #root {
   @include editor.editor;
   @include editor-plugins.bubble-menu;
 
   .ProseMirror {
-    margin: 0 9em;
+    outline: none;
   }
 }
