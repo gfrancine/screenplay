@@ -7,12 +7,12 @@ const createCol = () =>
     schema.nodes.characterInDual.create(null, schema.text(".")),
   ]);
 
-export const createDualDialogue: Command = (state, dispatch, view) => {
+export const insertDualDialogue: Command = (state, dispatch, view) => {
   if (!state.selection.empty) return false;
   const tr = state.tr.insert(
     state.selection.from,
     [
-      schema.nodes.dualDialogue.createAndFill(null, [
+      schema.nodes.dualDialogue.create(null, [
         createCol(),
         createCol(),
       ]),

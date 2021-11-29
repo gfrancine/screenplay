@@ -10,7 +10,7 @@ import { JSONState } from "../types";
 import { Node, Schema } from "prosemirror-model";
 
 export { schema } from "./schema";
-export { createDualDialogue } from "./dual-dialogue";
+export { insertDualDialogue } from "./dual-dialogue";
 
 export const defaultPlugins = [
   keymap(makeEnterHandlerKeymap(baseKeymap as { Enter: Command })),
