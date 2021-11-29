@@ -11,7 +11,7 @@ export const schema = new Schema({
     action: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ tag: "p" }, { attrs: { class: "x-action" } }],
+      parseDOM: [{ tag: "p.x-action" }],
       toDOM() {
         return ["p", { class: "x-action" }, 0];
       },
@@ -19,7 +19,7 @@ export const schema = new Schema({
     character: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-character" } }],
+      parseDOM: [{ tag: "p.x-character" }],
       toDOM() {
         return ["p", { class: "x-character" }, 0];
       },
@@ -27,7 +27,7 @@ export const schema = new Schema({
     dialogue: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-dialogue" } }],
+      parseDOM: [{ tag: "p.x-dialogue" }],
       toDOM() {
         return ["p", { class: "x-dialogue" }, 0];
       },
@@ -35,7 +35,7 @@ export const schema = new Schema({
     characterInDual: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-character dual" } }],
+      parseDOM: [{ tag: "p.x-character dual" }],
       toDOM() {
         return ["p", { class: "x-character dual" }, 0];
       },
@@ -43,7 +43,7 @@ export const schema = new Schema({
     dialogueInDual: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-dialogue dual" } }],
+      parseDOM: [{ tag: "p.x-dialogue dual" }],
       toDOM() {
         return ["p", { class: "x-dialogue dual" }, 0];
       },
@@ -51,7 +51,7 @@ export const schema = new Schema({
     parentheticalInDual: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-parenthetical dual" } }],
+      parseDOM: [{ tag: "p.x-parenthetical dual" }],
       toDOM() {
         return ["p", { class: "x-parenthetical dual" }, 0];
       },
@@ -59,7 +59,7 @@ export const schema = new Schema({
     dualDialogueCol: {
       content: "characterInDual (dialogueInDual | parentheticalInDual)*",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-dual-dialogue-col" } }],
+      parseDOM: [{ tag: "div.x-dual-dialogue-col" }],
       toDOM() {
         return ["div", { class: "x-dual-dialogue-col" }, 0];
       },
@@ -68,7 +68,7 @@ export const schema = new Schema({
     dualDialogue: {
       content: "dualDialogueCol{2}",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-dual-dialogue" } }],
+      parseDOM: [{ tag: "div.x-dual-dialogue" }],
       toDOM() {
         return ["div", { class: "x-dual-dialogue" }, 0];
       },
@@ -76,7 +76,7 @@ export const schema = new Schema({
     scene: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-scene" } }],
+      parseDOM: [{ tag: "p.x-scene" }],
       toDOM() {
         return ["p", { class: "x-scene" }, 0];
       },
@@ -84,7 +84,7 @@ export const schema = new Schema({
     parenthetical: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-parenthetical" } }],
+      parseDOM: [{ tag: "p.x-parenthetical" }],
       toDOM() {
         return ["p", { class: "x-parenthetical" }, 0];
       },
@@ -92,7 +92,7 @@ export const schema = new Schema({
     transition: {
       content: "inline*",
       group: "block",
-      parseDOM: [{ attrs: { class: "x-transition" } }],
+      parseDOM: [{ tag: "p.x-transition" }],
       toDOM() {
         return ["p", { class: "x-transition" }, 0];
       },
