@@ -1,14 +1,14 @@
-export type JsonTextMark = {
+export type JSONTextMark = {
   type: "u" | "strong" | "em" | "charParen";
 };
 
-export type JsonTextNode = {
+export type JSONTextNode = {
   type: "text";
-  marks: JsonTextMark[];
+  marks: JSONTextMark[];
   text: string;
 };
 
-export type JsonFlatBlockNode = {
+export type JSONFlatBlockNode = {
   type:
     | "scene"
     | "character"
@@ -19,35 +19,35 @@ export type JsonFlatBlockNode = {
     | "dialogueInDual"
     | "parentheticalInDual"
     | "transition";
-  content: JsonTextNode[];
+  content: JSONTextNode[];
 };
 
-export type JsonDualDialogueFlatBlockNode = {
+export type JSONDualDialogueFlatBlockNode = {
   type:
     | "characterInDual"
     | "dialogueInDual"
     | "parentheticalInDual";
-  content: JsonTextNode[];
+  content: JSONTextNode[];
 };
 
-export type JsonDualDialogueCol = {
+export type JSONDualDialogueCol = {
   type: "dialogue";
-  content: JsonDualDialogueFlatBlockNode[];
+  content: JSONDualDialogueFlatBlockNode[];
 };
 
-export type JsonDualDialogue = {
+export type JSONDualDialogue = {
   type: "dualDialogue";
-  content: [JsonDualDialogueCol, JsonDualDialogueCol];
+  content: [JSONDualDialogueCol, JSONDualDialogueCol];
 };
 
-export type JsonTopLevelBlockNode =
-  | JsonFlatBlockNode
-  | JsonDualDialogue;
+export type JSONTopLevelBlockNode =
+  | JSONFlatBlockNode
+  | JSONDualDialogue;
 
-export type JsonState = {
+export type JSONState = {
   doc: {
     type: "doc";
-    content: JsonTopLevelBlockNode[];
+    content: JSONTopLevelBlockNode[];
   };
   selection?: {
     type: string;

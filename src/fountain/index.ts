@@ -1,8 +1,8 @@
-import { JsonFlatBlockNode, JsonState, JsonTextNode } from "../types";
+import { JSONFlatBlockNode, JSONState, JSONTextNode } from "../types";
 
 // https://fountain.io/syntax
 
-function textNodeToFountain(textNode: JsonTextNode) {
+function textNodeToFountain(textNode: JSONTextNode) {
   let { text } = textNode;
   textNode.marks.forEach((mark) => {
     switch (mark.type) {
@@ -24,7 +24,7 @@ function textNodeToFountain(textNode: JsonTextNode) {
   return text;
 }
 
-function flatBlockToFountain(block: JsonFlatBlockNode, opts?: {
+function flatBlockToFountain(block: JSONFlatBlockNode, opts?: {
   isDualDialogue?: boolean;
 }) {
   let text = block.content.map(textNodeToFountain).join("");
@@ -66,7 +66,7 @@ function flatBlockToFountain(block: JsonFlatBlockNode, opts?: {
   return text;
 }
 
-export function stateToFountain(state: JsonState) {
+export function stateToFountain(state: JSONState) {
   let str = "";
 
   state.doc.content.forEach((block) => {
