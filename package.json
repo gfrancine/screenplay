@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
+    "fmt": "prettier --write \"src/**/*.ts\" \"styles/**/*.scss\" \"demo/**/*.ts\" \"demo/**/*.scss\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "shx rm -rf demo/dist && shx cp -r demo/public demo/dist && node scripts/bundle-demo.js && serve demo/dist --no-clipboard"
   },
@@ -22,6 +23,7 @@
     "@types/prosemirror-view": "^1.19.1",
     "esbuild": "^0.14.0",
     "esbuild-sass-plugin": "^1.7.1",
+    "prettier": "^2.5.0",
     "serve": "^13.0.2",
     "shx": "^0.3.3"
   }

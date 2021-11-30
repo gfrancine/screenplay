@@ -1,6 +1,6 @@
 @mixin editor {
   .ProseMirror {
-    font-family: "Courier Prime", 'Courier New', Courier, monospace;
+    font-family: "Courier Prime", "Courier New", Courier, monospace;
     font-size: 12pt;
     width: 34.8em;
     white-space: pre-wrap;
@@ -15,7 +15,7 @@
       text-transform: uppercase;
       font-weight: bold;
       position: relative;
-      display:block;
+      display: block;
 
       .x-scenenum-left {
         position: absolute;
@@ -49,7 +49,7 @@
     }
 
     // 1 character width = 0.6em
-    
+
     .x-character {
       margin: 1em 0 0 12em;
       text-transform: uppercase;
@@ -91,7 +91,7 @@
           margin: 0 0 0 1.8em;
           width: 14.4em;
         }
-        
+
         .x-dialogue-dual {
           margin: 0;
           width: 16.2em;

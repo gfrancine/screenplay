@@ -75,16 +75,19 @@ export const schema = new Schema({
     scene: {
       content: "inline*",
       group: "block",
-      parseDOM: [{
-        tag: "div.x-scene",
-        getAttrs(domNode) {
-          return {
-            number: (domNode as HTMLElement)
-              .attributes
-              .getNamedItem("data-scene-number")?.value || "",
-          };
+      parseDOM: [
+        {
+          tag: "div.x-scene",
+          getAttrs(domNode) {
+            return {
+              number:
+                (domNode as HTMLElement).attributes.getNamedItem(
+                  "data-scene-number"
+                )?.value || "",
+            };
+          },
         },
-      }],
+      ],
       toDOM(node) {
         return [
           "div",

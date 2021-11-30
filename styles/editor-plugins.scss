@@ -2,11 +2,11 @@
   .x-bubble-menu {
     position: absolute;
     width: fit-content;
-    padding: .5em;
+    padding: 0.5em;
     background-color: #eee;
     transform: translateY(-50%);
     transition: opacity 0.12s;
-    
+
     &.hidden {
       opacity: 0;
     }

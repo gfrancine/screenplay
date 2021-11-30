@@ -8,7 +8,7 @@ export class Elbuilder {
   on<K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => unknown,
-    options?: boolean | AddEventListenerOptions,
+    options?: boolean | AddEventListenerOptions
   ) {
     this.element.addEventListener(type, listener, options);
     return this;
@@ -16,7 +16,7 @@ export class Elbuilder {
 
   off<K extends keyof HTMLElementEventMap>(
     type: K,
-    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => unknown,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => unknown
   ) {
     this.element.removeEventListener(type, listener);
     return this;

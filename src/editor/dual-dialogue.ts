@@ -9,16 +9,11 @@ const createCol = () =>
 
 export const insertDualDialogue: Command = (state, dispatch, view) => {
   if (!state.selection.empty) return false;
-  const tr = state.tr.insert(
-    state.selection.from,
-    [
-      schema.nodes.dualDialogue.create(null, [
-        createCol(),
-        createCol(),
-      ]),
+  const tr = state.tr
+    .insert(state.selection.from, [
+      schema.nodes.dualDialogue.create(null, [createCol(), createCol()]),
       schema.nodes.action.createAndFill(),
-    ],
-  )
+    ])
     .scrollIntoView();
   dispatch(tr);
 

@@ -19,7 +19,8 @@ export const parentheticalPlugin = keymap({
     state.doc.nodesBetween(from, from, (node) => {
       if (hasHandled) return;
       if (
-        node.type.name === "dialogue" || node.type.name === "dialogueInDual"
+        node.type.name === "dialogue" ||
+        node.type.name === "dialogueInDual"
       ) {
         if (node.content.size < 1) {
           if (node.type.name === "dialogueInDual") {
@@ -31,7 +32,7 @@ export const parentheticalPlugin = keymap({
           // move selection to the middle
           const pos = view.state.tr.doc.resolve(view.state.selection.from - 1);
           view.dispatch(
-            view.state.tr.setSelection(new TextSelection(pos, pos)),
+            view.state.tr.setSelection(new TextSelection(pos, pos))
           );
         } else {
           // is it at the end of the node?
@@ -45,27 +46,28 @@ export const parentheticalPlugin = keymap({
                 from + 1,
                 schema.nodes.parentheticalInDual.create(null, [
                   schema.text("()"),
-                ]),
-              ),
+                ])
+              )
             );
           } else {
             view.dispatch(
               state.tr.insert(
                 from + 1,
-                schema.nodes.parenthetical.create(null, [schema.text("()")]),
-              ),
+                schema.nodes.parenthetical.create(null, [schema.text("()")])
+              )
             );
           }
 
           const pos = view.state.tr.doc.resolve(view.state.selection.from + 3);
           view.dispatch(
-            view.state.tr.setSelection(new TextSelection(pos, pos)),
+            view.state.tr.setSelection(new TextSelection(pos, pos))
           );
         }
 
         hasHandled = true;
       } else if (
-        node.type.name === "character" || node.type.name === "characterInDual"
+        node.type.name === "character" ||
+        node.type.name === "characterInDual"
       ) {
         // is it at the end of the node?
         const resolvedPos = state.tr.doc.resolve(from);

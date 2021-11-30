@@ -13,7 +13,7 @@ const setAction = setBlockType(schema.nodes.action);
 
 /** Wraps an existing keymap with Enter implemented and returns a new keymap. */
 export function makeEnterHandlerKeymap<T extends { Enter: Command }>(
-  keymap: T,
+  keymap: T
 ): T {
   const command: Command = (state, dispatch, view) => {
     if (!state.selection.empty) {
@@ -34,7 +34,8 @@ export function makeEnterHandlerKeymap<T extends { Enter: Command }>(
         return;
       }
 
-      hasHandled = keymap["Enter"](state, dispatch, view) &&
+      hasHandled =
+        keymap["Enter"](state, dispatch, view) &&
         command(view.state, view.dispatch);
     });
 

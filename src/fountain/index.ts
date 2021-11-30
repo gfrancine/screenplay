@@ -30,9 +30,12 @@ function textNodeToFountain(textNode: JSONTextNode) {
   return text;
 }
 
-function flatBlockToFountain(block: JSONFlatBlockNode, opts?: {
-  isDualDialogue?: boolean;
-}) {
+function flatBlockToFountain(
+  block: JSONFlatBlockNode,
+  opts?: {
+    isDualDialogue?: boolean;
+  }
+) {
   let text = block.content
     ? block.content.map(textNodeToFountain).join("")
     : "";
@@ -90,12 +93,13 @@ export function docToFountain(doc: JSONDoc) {
   doc.content.forEach((block) => {
     if (block.type === "dualDialogue") {
       block = block as JSONDualDialogue;
-      str += block.content[0].content.map((node) =>
-        flatBlockToFountain(node)
-      ).join("") +
-        block.content[1].content.map((node) =>
-          flatBlockToFountain(node, { isDualDialogue: true })
-        ).join("");
+      str +=
+        block.content[0].content
+          .map((node) => flatBlockToFountain(node))
+          .join("") +
+        block.content[1].content
+          .map((node) => flatBlockToFountain(node, { isDualDialogue: true }))
+          .join("");
     } else {
       str += flatBlockToFountain(block);
     }
@@ -104,11 +108,8 @@ export function docToFountain(doc: JSONDoc) {
   return str.trim();
 }
 
-export function docFromFountain() {
-}
+export function docFromFountain() {}
 
-export function titleToFountain() {
-}
+export function titleToFountain() {}
 
-export function titleFromFountain() {
-}
+export function titleFromFountain() {}

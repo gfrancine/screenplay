@@ -26,25 +26,24 @@ export class ScreenplayEditor {
     schema: Schema;
   };
 
-  constructor({ root, plugins = [], jsonDoc }: {
+  constructor({
+    root,
+    plugins = [],
+    jsonDoc,
+  }: {
     root: Element;
     plugins?: Plugin[];
     jsonDoc?: JSONDoc;
   }) {
     this.config = {
       schema,
-      plugins: [
-        ...defaultPlugins,
-        ...plugins,
-      ],
+      plugins: [...defaultPlugins, ...plugins],
     };
 
-    const state = jsonDoc !== undefined
-      ? EditorState.fromJSON(
-        this.config,
-        jsonDoc,
-      )
-      : EditorState.create(this.config);
+    const state =
+      jsonDoc !== undefined
+        ? EditorState.fromJSON(this.config, jsonDoc)
+        : EditorState.create(this.config);
 
     this.view = new EditorView(root, {
       state,
@@ -55,10 +54,12 @@ export class ScreenplayEditor {
   }
 
   loadJSON(jsonDoc: JSONDoc) {
-    this.view.updateState(EditorState.create({
-      ...this.config,
-      doc: Node.fromJSON(schema, jsonDoc),
-    }));
+    this.view.updateState(
+      EditorState.create({
+        ...this.config,
+        doc: Node.fromJSON(schema, jsonDoc),
+      })
+    );
   }
 
   toJSON(): JSONDoc {

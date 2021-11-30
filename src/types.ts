@@ -18,23 +18,20 @@ export type JSONSceneNode = {
 
 export type JSONFlatBlockNode =
   | {
-    type:
-      | "scene"
-      | "character"
-      | "action"
-      | "dialogue"
-      | "parenthetical"
-      | "transition";
-    content?: JSONTextNode[];
-  }
+      type:
+        | "scene"
+        | "character"
+        | "action"
+        | "dialogue"
+        | "parenthetical"
+        | "transition";
+      content?: JSONTextNode[];
+    }
   | JSONDualDialogueFlatBlockNode
   | JSONSceneNode;
 
 export type JSONDualDialogueFlatBlockNode = {
-  type:
-    | "characterInDual"
-    | "dialogueInDual"
-    | "parentheticalInDual";
+  type: "characterInDual" | "dialogueInDual" | "parentheticalInDual";
   content?: JSONTextNode[];
 };
 
@@ -48,9 +45,7 @@ export type JSONDualDialogue = {
   content: [JSONDualDialogueCol, JSONDualDialogueCol];
 };
 
-export type JSONTopLevelBlockNode =
-  | JSONFlatBlockNode
-  | JSONDualDialogue;
+export type JSONTopLevelBlockNode = JSONFlatBlockNode | JSONDualDialogue;
 
 export type JSONDoc = {
   type: "doc";
