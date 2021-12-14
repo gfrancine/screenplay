@@ -8,7 +8,6 @@ import {
   JSONDualDialogueFlatBlockNode,
   JSONTextMark,
   JSONFlatBlockNode,
-  JSONSceneNode,
   JSONTextNode,
 } from "../types";
 
@@ -48,13 +47,9 @@ function flatBlockToFountain(
 
   switch (block.type) {
     case "scene": {
-      text = text.toUpperCase();
-      if (!text.startsWith("INT") && !text.startsWith("EXT")) {
-        text = "." + text;
-      }
-      const sceneBlock = block as JSONSceneNode;
-      if (sceneBlock.attrs.number.length > 0) {
-        text += " #" + sceneBlock.attrs.number + "#";
+      text = "." + text.toUpperCase();
+      if (block.attrs.number.length > 0) {
+        text += " #" + block.attrs.number + "#";
       }
       text = "\n\n" + text;
       break;
@@ -65,16 +60,15 @@ function flatBlockToFountain(
       if (matches) {
         const character = matches[1];
         const paren = matches[2] || "";
-        text = "\n\n" + character.toUpperCase() + paren;
+        text = "\n\n@" + character.toUpperCase() + paren;
       } else {
-        text = "\n\n" + text.toUpperCase();
+        text = "\n\n@" + text.toUpperCase();
       }
       if (opts?.isDualDialogue) text += " ^";
       break;
     }
     case "transition": {
-      if (!text.endsWith("TO:")) text = "> " + text;
-      text = "\n\n" + text;
+      text = "\n\n> " + text;
       break;
     }
     case "parenthetical":
