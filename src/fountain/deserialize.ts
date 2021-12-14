@@ -84,16 +84,10 @@ export function docFromFountain(source: string) {
         doc.content.push({
           type: "scene",
           attrs: {
-            number: "",
+            number: token.scene_number || "",
           },
           content: contentsFromHtmlString(token.text || ""),
         });
-        break;
-      }
-      case "scene_number": {
-        const lastNode = doc.content[doc.content.length - 1];
-        if (!lastNode || lastNode.type !== "scene") break;
-        lastNode.attrs.number = token.text || "";
         break;
       }
       case "dual_dialogue_begin": {
