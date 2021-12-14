@@ -9,6 +9,7 @@ import { parentheticalPlugin } from "./key-parenthesis";
 import { JSONDoc } from "../types";
 import { Node, Schema } from "prosemirror-model";
 import { sceneNodeView } from "./scene";
+import { sceneArrowUpPlugin } from "./key-arrowup";
 
 export { schema } from "./schema";
 export { insertDualDialogue } from "./dual-dialogue";
@@ -18,6 +19,7 @@ export const defaultPlugins = [
   keymap(makeEnterHandlerKeymap(baseKeymap as { Enter: Command })),
   tabPlugin,
   parentheticalPlugin,
+  sceneArrowUpPlugin,
 ];
 
 export class ScreenplayEditor {
