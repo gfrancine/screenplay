@@ -4,6 +4,7 @@ import {
   JSONFlatBlockNode,
   JSONSceneNode,
   JSONTextNode,
+  JSONTitlePage,
 } from "../types";
 
 // https://fountain.io/syntax
@@ -108,4 +109,6 @@ export function docToFountain(doc: JSONDoc) {
   return str.trim();
 }
 
-export function titleToFountain() {}
+export function titleToFountain(_titlePage: JSONTitlePage): string {
+  throw new Error("unimplemented");
+}

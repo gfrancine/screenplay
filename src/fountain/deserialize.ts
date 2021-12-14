@@ -5,6 +5,7 @@ import {
   JSONDualDialogueFlatBlockNode,
   JSONTextMark,
   JSONTextNode,
+  JSONTitlePage,
 } from "../types";
 
 function contentsFromHtmlString(html: string) {
@@ -155,4 +156,6 @@ export function docFromFountain(source: string) {
   return doc;
 }
 
-export function titleFromFountain() {}
+export function titleFromFountain(_source: string): JSONTitlePage {
+  throw new Error("unimplemented");
+}
