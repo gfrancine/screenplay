@@ -19,7 +19,6 @@ export type JSONSceneNode = {
 export type JSONFlatBlockNode =
   | {
       type:
-        | "scene"
         | "character"
         | "action"
         | "dialogue"
@@ -36,7 +35,7 @@ export type JSONDualDialogueFlatBlockNode = {
 };
 
 export type JSONDualDialogueCol = {
-  type: "dialogue";
+  type: "dualDialogueCol";
   content: JSONDualDialogueFlatBlockNode[];
 };
 

@@ -8,6 +8,7 @@
     "dev": "shx rm -rf demo/dist && shx cp -r demo/public demo/dist && node scripts/bundle-demo.js && serve demo/dist --no-clipboard"
   },
   "dependencies": {
+    "fountain.ts": "^0.1.1",
     "prosemirror-commands": "^1.1.12",
     "prosemirror-history": "^1.2.0",
     "prosemirror-keymap": "^1.1.5",

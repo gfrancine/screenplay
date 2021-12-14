@@ -6,7 +6,8 @@ import {
   dualDialogueKeysPlugin,
   markupKeysPlugin,
 } from "../src/editor-plugins/keybinds";
-import { docToFountain } from "../src/fountain";
+import { docToFountain, docFromFountain } from "../src/fountain";
+import bns from "./bns";
 
 import "./index.scss";
 
@@ -21,8 +22,12 @@ const sp = new ScreenplayEditor({
   ],
 });
 
-(window as unknown as { sp: ScreenplayEditor }).sp = sp;
-(window as unknown as { toFountain: typeof docToFountain }).toFountain = () =>
-  docToFountain(sp.toJSON());
+const global = window as unknown as Record<string, unknown>;
+global.sp = sp;
+global.toFountain = () => docToFountain(sp.toJSON());
+global.fromFountain = (source: string) => {
+  sp.loadJSON(docFromFountain(source));
+};
 
 sp.view.focus();
+sp.loadJSON(docFromFountain(bns));
