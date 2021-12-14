@@ -117,6 +117,14 @@ export const schema = new Schema({
         return ["p", { class: "x-transition" }, 0];
       },
     },
+    centered: {
+      content: "inline*",
+      group: "block",
+      parseDOM: [{ tag: "p.x-centered" }],
+      toDOM() {
+        return ["p", { class: "x-centered" }, 0];
+      },
+    },
     text: {
       group: "inline",
     },

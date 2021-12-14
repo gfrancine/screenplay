@@ -23,7 +23,8 @@ export type JSONFlatBlockNode =
         | "action"
         | "dialogue"
         | "parenthetical"
-        | "transition";
+        | "transition"
+        | "centered";
       content?: JSONTextNode[];
     }
   | JSONDualDialogueFlatBlockNode

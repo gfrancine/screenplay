@@ -3,9 +3,10 @@ import { setBlockType } from "prosemirror-commands";
 import { keymap } from "prosemirror-keymap";
 
 const nodeCommandsMap = {
-  // action > character > transition > scene >
+  // action > character > centered > transition > scene >
   action: setBlockType(schema.nodes.character),
-  character: setBlockType(schema.nodes.transition),
+  character: setBlockType(schema.nodes.centered),
+  centered: setBlockType(schema.nodes.transition),
   transition: setBlockType(schema.nodes.scene),
   scene: setBlockType(schema.nodes.action),
 

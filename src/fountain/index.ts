@@ -71,6 +71,10 @@ function flatBlockToFountain(
       text = "\n\n> " + text;
       break;
     }
+    case "centered": {
+      text = "\n\n>" + text + "<";
+      break;
+    }
     case "parenthetical":
     case "dialogue":
     case "parentheticalInDual":
@@ -176,7 +180,8 @@ export function docFromFountain(source: string) {
   tokens.forEach((token) => {
     switch (token.type) {
       case "action":
-      case "transition": {
+      case "transition":
+      case "centered": {
         doc.content.push({
           type: token.type,
           content: contentsFromHtmlString(token.text || ""),
