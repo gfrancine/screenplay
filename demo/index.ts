@@ -7,8 +7,8 @@ import {
   markupKeysPlugin,
 } from "../src/editor-plugins/keybinds";
 import { docToFountain, docFromFountain } from "../src/fountain";
-import bns from "./bns";
 
+// import bns from "./bns";
 import "./index.scss";
 
 const sp = new ScreenplayEditor({
@@ -29,5 +29,6 @@ global.fromFountain = (source: string) => {
   sp.loadJSON(docFromFountain(source));
 };
 
+// sp.loadJSON(docFromFountain(bns));
+
 sp.view.focus();
-sp.loadJSON(docFromFountain(bns));
