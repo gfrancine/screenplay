@@ -10,6 +10,7 @@ import { JSONDoc } from "../types";
 import { Node, Schema } from "prosemirror-model";
 import { sceneNodeView } from "./scene";
 import { sceneArrowUpPlugin } from "./key-arrowup";
+import { basicInputRulesPlugin } from "./inputrules";
 
 export { schema } from "./schema";
 export { insertDualDialogue } from "./dual-dialogue";
@@ -20,6 +21,7 @@ export const defaultPlugins = [
   tabPlugin,
   parentheticalPlugin,
   sceneArrowUpPlugin,
+  basicInputRulesPlugin,
 ];
 
 export class ScreenplayEditor {

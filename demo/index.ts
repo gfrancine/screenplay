@@ -1,14 +1,14 @@
+import "./index.scss";
 import { ScreenplayEditor } from "../src/editor";
 import { history, redo, undo } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 import { bubbleMenuPlugin } from "../src/editor-plugins/bubble-menu";
-import { basicInputRulesPlugin } from "../src/editor-plugins/inputrules";
 import {
   dualDialogueKeysPlugin,
   markupKeysPlugin,
 } from "../src/editor-plugins/keybinds";
 import { docToFountain, docFromFountain } from "../src/fountain";
-import "./index.scss";
+import { fountainInputRulesPlugin } from "../src/editor-plugins/fountain-inputrules";
 
 const sp = new ScreenplayEditor({
   root: document.getElementById("root"),
@@ -18,7 +18,7 @@ const sp = new ScreenplayEditor({
     bubbleMenuPlugin,
     markupKeysPlugin,
     dualDialogueKeysPlugin,
-    basicInputRulesPlugin,
+    fountainInputRulesPlugin,
   ],
 });
 

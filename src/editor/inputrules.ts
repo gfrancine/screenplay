@@ -1,11 +1,8 @@
-import {
-  inputRules,
-  InputRule,
-  wrappingInputRule,
-} from "prosemirror-inputrules";
+import { inputRules, InputRule } from "prosemirror-inputrules";
 import { EditorState } from "prosemirror-state";
 import { NodeType } from "prosemirror-model";
 import { schema } from "../editor";
+import { isBetween } from "../internal-util/prosemirror";
 
 // copied from prosemirror-commands setBlockType
 function setBlockTypeTr(
@@ -32,17 +29,6 @@ function setBlockTypeTr(
   return state.tr.setBlockType(from, to, nodeType, attrs).scrollIntoView();
 }
 
-function isBetween(nodeType: string, state: EditorState) {
-  if (!state.selection.empty) return false;
-  const { from } = state.selection;
-  let found = false;
-  state.doc.nodesBetween(from, from, (node) => {
-    if (found) return true;
-    if (node.type.name === nodeType) found = true;
-  });
-  return found;
-}
-
 export const basicInputRulesPlugin = inputRules({
   rules: [
     new InputRule(/^(INT|EXT)\. $/, (state) => {
@@ -52,14 +38,6 @@ export const basicInputRulesPlugin = inputRules({
     new InputRule(/TO: $/, (state) => {
       if (!isBetween("action", state)) return null;
       return setBlockTypeTr(state, schema.nodes.transition);
-    }),
-    new InputRule(/^> $/, (state, _matches, start, end) => {
-      if (!isBetween("action", state)) return null;
-      return state.tr.replaceWith(
-        start,
-        end,
-        schema.nodes.transition.createAndFill()
-      );
     }),
   ],
 });
