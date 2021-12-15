@@ -2,13 +2,12 @@ import { ScreenplayEditor } from "../src/editor";
 import { history, redo, undo } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 import { bubbleMenuPlugin } from "../src/editor-plugins/bubble-menu";
+import { basicInputRulesPlugin } from "../src/editor-plugins/inputrules";
 import {
   dualDialogueKeysPlugin,
   markupKeysPlugin,
 } from "../src/editor-plugins/keybinds";
 import { docToFountain, docFromFountain } from "../src/fountain";
-
-// import bns from "./bns";
 import "./index.scss";
 
 const sp = new ScreenplayEditor({
@@ -19,6 +18,7 @@ const sp = new ScreenplayEditor({
     bubbleMenuPlugin,
     markupKeysPlugin,
     dualDialogueKeysPlugin,
+    basicInputRulesPlugin,
   ],
 });
 
@@ -28,7 +28,5 @@ global.toFountain = () => docToFountain(sp.toJSON());
 global.fromFountain = (source: string) => {
   sp.loadJSON(docFromFountain(source));
 };
-
-// sp.loadJSON(docFromFountain(bns));
 
 sp.view.focus();
