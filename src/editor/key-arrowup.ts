@@ -13,7 +13,9 @@ export const sceneArrowUpPlugin = keymap({
     state.doc.nodesBetween(from, from, (node) => {
       if (node.type.name === "scene") {
         if (view.state.selection.$anchor.parentOffset > 0) return;
-        const pos = view.state.tr.doc.resolve(view.state.selection.from - 2);
+        const pos = view.state.tr.doc.resolve(
+          view.state.tr.doc.resolve(view.state.selection.from - 2).start(1)
+        );
         view.dispatch(view.state.tr.setSelection(new TextSelection(pos, pos)));
         hasHandled = true;
         return hasHandled;
