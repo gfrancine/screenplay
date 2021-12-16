@@ -1,28 +1,27 @@
 import { schema } from "./schema";
 import { EditorState, Plugin } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
-import { baseKeymap } from "prosemirror-commands";
+import { keymap } from "prosemirror-keymap";
+import { baseKeymap, Command } from "prosemirror-commands";
 import { tabPlugin } from "./key-tab";
-import { enterPlugin } from "./key-enter";
+import { makeEnterHandlerKeymap } from "./key-enter";
 import { parentheticalPlugin } from "./key-parenthesis";
 import { JSONDoc } from "../types";
 import { Node, Schema } from "prosemirror-model";
 import { sceneNodeView } from "./scene";
 import { sceneArrowUpPlugin } from "./key-arrowup";
 import { basicInputRulesPlugin } from "./inputrules";
-import { keymap } from "prosemirror-keymap";
 
 export { schema } from "./schema";
 export { toggleDualDialogue } from "./dual-dialogue";
 export { sceneNodeView } from "./scene";
 
 export const defaultPlugins = [
-  enterPlugin,
+  keymap(makeEnterHandlerKeymap(baseKeymap as { Enter: Command })),
   tabPlugin,
   parentheticalPlugin,
   sceneArrowUpPlugin,
   basicInputRulesPlugin,
-  keymap(baseKeymap),
 ];
 
 export class ScreenplayEditor {

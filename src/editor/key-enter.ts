@@ -1,6 +1,7 @@
-import { setBlockType } from "prosemirror-commands";
-import { keymap } from "prosemirror-keymap";
+import { Command, setBlockType } from "prosemirror-commands";
 import { schema } from "./schema";
+
+// Node behavior on enter.
 
 const nodeCommandsMap = {
   character: setBlockType(schema.nodes.dialogue),
@@ -10,9 +11,14 @@ const nodeCommandsMap = {
 
 const setAction = setBlockType(schema.nodes.action);
 
-export const enterPlugin = keymap({
-  Enter(state, _dispatch, view) {
-    if (!state.selection.empty) return false;
+/** Wraps an existing keymap with Enter implemented and returns a new keymap. */
+export function makeEnterHandlerKeymap<T extends { Enter: Command }>(
+  keymap: T
+): T {
+  const command: Command = (state, dispatch, view) => {
+    if (!state.selection.empty) {
+      return keymap["Enter"](state, dispatch, view);
+    }
 
     const from = state.selection.from;
     let hasHandled = false;
@@ -28,9 +34,16 @@ export const enterPlugin = keymap({
         return;
       }
 
-      hasHandled = command(view.state, view.dispatch);
+      hasHandled =
+        keymap["Enter"](state, dispatch, view) &&
+        command(view.state, view.dispatch);
     });
 
-    return hasHandled;
-  },
-});
+    return hasHandled ? hasHandled : keymap["Enter"](state, dispatch, view); // make sure it doesn't evaluate this
+  };
+
+  return {
+    ...keymap,
+    Enter: command,
+  };
+}
