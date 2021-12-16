@@ -1,6 +1,6 @@
 import { toggleMark } from "prosemirror-commands";
 import { keymap } from "prosemirror-keymap";
-import { insertDualDialogue, schema } from "../editor";
+import { toggleDualDialogue, schema } from "../editor";
 
 export const markupKeysPlugin = keymap({
   "Mod-b": toggleMark(schema.marks.strong),
@@ -9,5 +9,5 @@ export const markupKeysPlugin = keymap({
 });
 
 export const dualDialogueKeysPlugin = keymap({
-  "Mod-Alt-u": insertDualDialogue,
+  "Mod-Alt-u": toggleDualDialogue,
 });

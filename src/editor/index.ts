@@ -13,7 +13,7 @@ import { sceneArrowUpPlugin } from "./key-arrowup";
 import { basicInputRulesPlugin } from "./inputrules";
 
 export { schema } from "./schema";
-export { insertDualDialogue } from "./dual-dialogue";
+export { toggleDualDialogue } from "./dual-dialogue";
 export { sceneNodeView } from "./scene";
 
 export const defaultPlugins = [
