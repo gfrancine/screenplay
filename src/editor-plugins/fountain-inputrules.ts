@@ -39,6 +39,7 @@ function markInputRule(regexp: RegExp, markType: MarkType, matchNumber = 1) {
 export const fountainInputRulesPlugin = inputRules({
   rules: [
     replacingInputRule(/^> $/, schema.nodes.transition),
+    replacingInputRule(/^= $/, schema.nodes.synopsis),
     replacingInputRule(/^\. $/, schema.nodes.scene),
     replacingInputRule(/^@ $/, schema.nodes.character),
     markInputRule(/\*\*([^*]+)\*\*/, schema.marks.strong),

@@ -75,6 +75,10 @@ function flatBlockToFountain(
       text = "\n\n>" + text + "<";
       break;
     }
+    case "synopsis": {
+      text = "\n\n= " + text;
+      break;
+    }
     case "parenthetical":
     case "dialogue":
     case "parentheticalInDual":
@@ -181,7 +185,8 @@ export function docFromFountain(source: string) {
     switch (token.type) {
       case "action":
       case "transition":
-      case "centered": {
+      case "centered":
+      case "synopsis": {
         doc.content.push({
           type: token.type,
           content: contentsFromHtmlString(token.text || ""),

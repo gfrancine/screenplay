@@ -24,7 +24,8 @@ export type JSONFlatBlockNode =
         | "dialogue"
         | "parenthetical"
         | "transition"
-        | "centered";
+        | "centered"
+        | "synopsis";
       content?: JSONTextNode[];
     }
   | JSONDualDialogueFlatBlockNode

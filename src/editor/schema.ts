@@ -125,6 +125,14 @@ export const schema = new Schema({
         return ["p", { class: "x-centered" }, 0];
       },
     },
+    synopsis: {
+      content: "inline*",
+      group: "block",
+      parseDOM: [{ tag: "p.x-synopsis" }],
+      toDOM() {
+        return ["p", { class: "x-synopsis" }, 0];
+      },
+    },
     text: {
       group: "inline",
     },
