@@ -1,125 +1,123 @@
 @mixin editor {
-  .ProseMirror {
-    font-family: "Courier Prime", "Courier New", Courier, monospace;
-    font-size: 12pt;
-    width: 34.8em;
-    white-space: pre-wrap;
-    margin: 0 9em;
+  font-family: "Courier Prime", "Courier New", Courier, monospace;
+  font-size: 12pt;
+  width: 34.8em;
+  white-space: pre-wrap;
+  margin: 0 9em;
 
-    * {
-      box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    .x-scene {
-      margin: 1em 0 0 0;
-      text-transform: uppercase;
-      font-weight: bold;
-      position: relative;
-      display: block;
+  .x-scene {
+    margin: 1em 0 0 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    display: block;
 
-      .x-scenenum-left {
-        position: absolute;
-        transform: translateX(calc(-100%));
-        text-align: center;
-        padding-right: 0.6em;
-        width: 9em;
-
-        // input reset
-        font-size: inherit;
-        font-family: inherit;
-        font-weight: inherit;
-        color: inherit;
-        padding: 0;
-        border: 0;
-        background: none;
-        outline: none;
-      }
-
-      .x-scenenum-right {
-        text-transform: none;
-        position: absolute;
-        transform: translateX(100%);
-        padding-left: 0.6em;
-        right: 0;
-      }
-    }
-
-    .x-action {
-      margin: 1em 0 0 0;
-    }
-
-    // 1 character width = 0.6em
-
-    .x-character {
-      margin: 1em 0 0 12em;
-      text-transform: uppercase;
-
-      .x-char-paren {
-        text-transform: none;
-      }
-    }
-
-    .x-dialogue {
-      margin: 0 0 0 6em;
-      width: 21em;
-    }
-
-    .x-dual-dialogue {
-      margin: 0;
-      display: flex;
-      flex-direction: row;
-      width: 34.8em;
-
-      :first-child.x-dual-dialogue-col {
-        margin-right: 2.4em;
-      }
-
-      .x-dual-dialogue-col {
-        width: 16.2em;
-
-        .x-character-dual {
-          margin: 1em 0 0 4.8em;
-          width: 11.4em;
-          text-transform: uppercase;
-
-          .x-char-paren {
-            text-transform: none;
-          }
-        }
-
-        .x-parenthetical-dual {
-          margin: 0 0 0 1.8em;
-          width: 14.4em;
-        }
-
-        .x-dialogue-dual {
-          margin: 0;
-          width: 16.2em;
-        }
-      }
-    }
-
-    .x-parenthetical {
-      margin: 0 0 0 8.4em;
-      width: 15em;
-    }
-
-    .x-transition {
-      margin: 1em 0 0 0;
-      text-align: right;
-      text-transform: uppercase;
-    }
-
-    .x-centered {
-      margin: 1em 0 0 0;
+    .x-scenenum-left {
+      position: absolute;
+      transform: translateX(calc(-100%));
       text-align: center;
+      padding-right: 0.6em;
+      width: 9em;
+
+      // input reset
+      font-size: inherit;
+      font-family: inherit;
+      font-weight: inherit;
+      color: inherit;
+      padding: 0;
+      border: 0;
+      background: none;
+      outline: none;
     }
 
-    .x-synopsis {
-      margin: 1em 0 0 0;
-      opacity: 0.6;
-      font-size: .9em;
-      font-style: italic;
+    .x-scenenum-right {
+      text-transform: none;
+      position: absolute;
+      transform: translateX(100%);
+      padding-left: 0.6em;
+      right: 0;
     }
+  }
+
+  .x-action {
+    margin: 1em 0 0 0;
+  }
+
+  // 1 character width = 0.6em
+
+  .x-character {
+    margin: 1em 0 0 12em;
+    text-transform: uppercase;
+
+    .x-char-paren {
+      text-transform: none;
+    }
+  }
+
+  .x-dialogue {
+    margin: 0 0 0 6em;
+    width: 21em;
+  }
+
+  .x-dual-dialogue {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    width: 34.8em;
+
+    :first-child.x-dual-dialogue-col {
+      margin-right: 2.4em;
+    }
+
+    .x-dual-dialogue-col {
+      width: 16.2em;
+
+      .x-character-dual {
+        margin: 1em 0 0 4.8em;
+        width: 11.4em;
+        text-transform: uppercase;
+
+        .x-char-paren {
+          text-transform: none;
+        }
+      }
+
+      .x-parenthetical-dual {
+        margin: 0 0 0 1.8em;
+        width: 14.4em;
+      }
+
+      .x-dialogue-dual {
+        margin: 0;
+        width: 16.2em;
+      }
+    }
+  }
+
+  .x-parenthetical {
+    margin: 0 0 0 8.4em;
+    width: 15em;
+  }
+
+  .x-transition {
+    margin: 1em 0 0 0;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .x-centered {
+    margin: 1em 0 0 0;
+    text-align: center;
+  }
+
+  .x-synopsis {
+    margin: 1em 0 0 0;
+    opacity: 0.6;
+    font-size: 0.9em;
+    font-style: italic;
   }
 }

@@ -8,10 +8,10 @@ body {
 }
 
 #root {
-  @include editor.editor;
   @include editor-plugins.bubble-menu;
 
   .ProseMirror {
     outline: none;
+    @include editor.editor;
   }
 }
