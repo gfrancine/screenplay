@@ -262,6 +262,12 @@ export function docFromFountain(source: string) {
         }
         break;
       }
+      default: {
+        doc.content.push({
+          type: "action",
+          content: contentsFromHtmlString(token.text || ""),
+        });
+      }
     }
   });
 
