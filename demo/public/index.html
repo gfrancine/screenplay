@@ -3,14 +3,30 @@
     <link rel="stylesheet" href="bundle.css" />
   </head>
   <body>
-    <ul>
-      <li>TAB to cycle between node types.</li>
-      <li>Mod+I for italic, Mod+B for bold, Mod+U for underline.</li>
-      <li>Mod+D to insert or convert to a dual dialogue.</li>
-      <li>The editor object is in the global namespace as <code>sp</code>.</li>
-      <li>Type <code>toFountain()</code> in the console to output the screenplay in Fountain.</li>
-      <li>Type <code>fromFountain("...")</code> in the console to import a Fountain screenplay.</li>
-    </ul>
+    <div id="help">
+      <strong style="float:right;cursor:pointer" onclick="document.getElementById('help').remove()">Close</strong>
+      <ul>
+        <li>Type <code>toFountain()</code> in the console to output the screenplay in Fountain.</li>
+        <li>Type <code>fromFountain(`...`)</code> in the console to import a Fountain screenplay.</li>
+        <li>Keybinds:
+          <ul>
+            <li>TAB to cycle between node types.</li>
+            <li>Mod+I for italic, Mod+B for bold, Mod+U for underline.</li>
+            <li>Mod+D to insert or convert to a dual dialogue.</li>
+          </ul>
+        </li>
+        <li>Shortcuts:
+          <ul>
+            <li>Type "<code>INT.</code>", "<code>EXT.</code>", or "<code>.</code>" to create a scene heading.</li>
+            <li>"<code>@</code>" for a character</li>
+            <li>"<code>></code>" or "<code>TO:</code>" for a transition</li>
+            <li>"<code>=</code>" for a synopsis.</li>
+            <li>"<code>*text*</code>" for italic, "<code>**text**</code>" for bold, "<code>_text_</code>" for underline.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <br/>
     <div id="root" spellcheck="false"></div>
     <script src="bundle.js"></script>
   </body>

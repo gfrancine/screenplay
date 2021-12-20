@@ -22,6 +22,8 @@ const sp = new ScreenplayEditor({
   ],
 });
 
+console.info("INFO: The editor object is in the global namespace as 'sp'.");
+
 const global = window as unknown as Record<string, unknown>;
 global.sp = sp;
 global.toFountain = () => docToFountain(sp.toJSON());
