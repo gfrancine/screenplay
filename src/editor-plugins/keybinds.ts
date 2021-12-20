@@ -9,5 +9,5 @@ export const markupKeysPlugin = keymap({
 });
 
 export const dualDialogueKeysPlugin = keymap({
-  "Mod-Alt-u": toggleDualDialogue,
+  "Mod-d": toggleDualDialogue,
 });
