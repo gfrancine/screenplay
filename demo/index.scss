@@ -11,7 +11,8 @@ body {
   @include editor-plugins.bubble-menu;
 
   .ProseMirror {
-    outline: none;
     @include editor.editor;
+    outline: none;
+    margin: 0 auto;
   }
 }
